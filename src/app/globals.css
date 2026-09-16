@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0b1120;
+  --deep-blue: #071a33;
+  --electric-blue: #0057ff;
+  --tech-gray: #f4f6f8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-deep-blue: var(--deep-blue);
+  --color-electric-blue: var(--electric-blue);
+  --color-tech-gray: var(--tech-gray);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.container-page {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.grid-glow {
+  background-image:
+    linear-gradient(to right, rgba(7, 26, 51, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(7, 26, 51, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 0%, black 40%, transparent 90%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}

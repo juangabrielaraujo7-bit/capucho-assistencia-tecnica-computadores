@@ -10,6 +10,14 @@ export type ServiceIcon =
   | "AppWindow"
   | "MonitorSmartphone";
 
+export interface ServiceImage {
+  src: string;
+  /** CSS object-position value, used only when fit is "cover" (the default). */
+  position?: string;
+  /** "cover" fills the frame (photos). "contain" floats the subject on the card background (cutouts). */
+  fit?: "cover" | "contain";
+}
+
 export interface Service {
   slug: string;
   name: string;
@@ -17,6 +25,7 @@ export interface Service {
   shortDescription: string;
   longDescription: string;
   keywords: string[];
+  image: ServiceImage;
 }
 
 export const services: Service[] = [
@@ -29,6 +38,7 @@ export const services: Service[] = [
     longDescription:
       "Realizamos a formatação completa do seu notebook ou desktop com backup prévio de todos os seus arquivos, fotos e documentos. O processo é feito com segurança, garantindo que nenhum dado seja perdido e que o equipamento volte a funcionar com máxima performance.",
     keywords: ["formatação de notebook", "backup de dados", "formatação com segurança São Paulo"],
+    image: { src: "/images/services/formatacao-com-backup.jpg" },
   },
   {
     slug: "upgrade-de-ssd",
@@ -39,6 +49,7 @@ export const services: Service[] = [
     longDescription:
       "Instalamos SSDs de alta qualidade em notebooks e desktops, com migração completa do sistema operacional e dos arquivos. O resultado é um computador muito mais rápido para ligar, abrir programas e rodar o dia a dia de trabalho.",
     keywords: ["upgrade de SSD", "troca de HD por SSD", "computador lento São Paulo"],
+    image: { src: "/images/services/upgrade-de-ssd.jpg", position: "50% 72%" },
   },
   {
     slug: "upgrade-de-memoria-ram",
@@ -49,6 +60,7 @@ export const services: Service[] = [
     longDescription:
       "Analisamos a placa-mãe e o sistema para indicar o melhor upgrade de memória RAM, aumentando a capacidade de multitarefa, a fluidez em jogos e a performance geral do seu computador.",
     keywords: ["upgrade de memória RAM", "aumentar RAM notebook", "computador travando"],
+    image: { src: "/images/services/upgrade-de-memoria-ram.jpg" },
   },
   {
     slug: "troca-de-hardware",
@@ -59,6 +71,7 @@ export const services: Service[] = [
     longDescription:
       "Realizamos a troca de placas, fontes, coolers, baterias e demais componentes de hardware, sempre utilizando peças confiáveis e com garantia do serviço executado.",
     keywords: ["troca de hardware", "conserto de placa-mãe", "assistência técnica de computadores"],
+    image: { src: "/images/services/troca-de-hardware.jpg" },
   },
   {
     slug: "montagem-de-pc-gamer",
@@ -69,6 +82,7 @@ export const services: Service[] = [
     longDescription:
       "Montamos PCs Gamer personalizados, com seleção de componentes compatíveis e otimizados para o seu orçamento, seja para jogos, streaming ou produtividade. Consultoria técnica completa do início ao fim.",
     keywords: ["montagem de PC Gamer", "PC Gamer sob medida São Paulo", "monte seu PC"],
+    image: { src: "/images/services/montagem-de-pc-gamer.png", fit: "contain" },
   },
   {
     slug: "manutencao-preventiva",
@@ -79,6 +93,7 @@ export const services: Service[] = [
     longDescription:
       "A manutenção preventiva inclui limpeza interna, troca de pasta térmica, revisão de coolers e verificação geral do equipamento, evitando superaquecimento, travamentos e falhas futuras.",
     keywords: ["manutenção preventiva de notebook", "limpeza interna computador", "pasta térmica"],
+    image: { src: "/images/services/manutencao-preventiva.jpg", position: "58% 50%" },
   },
   {
     slug: "diagnostico-e-solucao-de-problemas-tecnicos",
@@ -89,6 +104,7 @@ export const services: Service[] = [
     longDescription:
       "Utilizamos ferramentas e experiência técnica para diagnosticar com precisão falhas de hardware e software, apresentando um orçamento transparente antes de qualquer execução de serviço.",
     keywords: ["diagnóstico de computador", "notebook não liga", "solução de problemas técnicos"],
+    image: { src: "/images/services/diagnostico.jpg", position: "50% 42%" },
   },
   {
     slug: "reparo-de-placa",
@@ -99,6 +115,7 @@ export const services: Service[] = [
     longDescription:
       "Executamos reparo em nível de componente em placas-mãe e placas de vídeo, incluindo troca de capacitores, conectores de energia e outros componentes danificados.",
     keywords: ["reparo de placa-mãe", "conserto de placa de vídeo", "solda de componentes"],
+    image: { src: "/images/services/reparo-de-placa.jpg", position: "50% 40%" },
   },
   {
     slug: "instalacao-de-softwares",
@@ -109,6 +126,7 @@ export const services: Service[] = [
     longDescription:
       "Instalamos sistemas operacionais originais, drivers, pacotes de segurança e os softwares essenciais para o seu trabalho ou estudo, com tudo configurado e pronto para uso.",
     keywords: ["instalação de Windows", "instalação de programas", "configuração de software"],
+    image: { src: "/images/services/instalacao-de-softwares.jpg", position: "50% 35%" },
   },
   {
     slug: "troca-de-tela-notebook",
@@ -119,6 +137,7 @@ export const services: Service[] = [
     longDescription:
       "Trocamos telas de notebook com defeito, trincadas ou queimadas, utilizando peças compatíveis com o modelo do seu equipamento, devolvendo a qualidade de imagem original.",
     keywords: ["troca de tela de notebook", "conserto de tela notebook São Paulo", "tela quebrada"],
+    image: { src: "/images/services/troca-de-tela-notebook.jpg" },
   },
 ];
 

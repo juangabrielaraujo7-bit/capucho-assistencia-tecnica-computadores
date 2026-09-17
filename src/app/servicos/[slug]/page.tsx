@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { ServiceCardImage } from "@/components/ui/ServiceCardImage";
 import { getServiceBySlug, services } from "@/lib/services";
 import { iconMap } from "@/lib/icon-map";
 import { buildWhatsAppUrl, siteConfig } from "@/lib/site-config";
@@ -61,11 +62,20 @@ export default async function ServicePage({ params }: ServicePageProps) {
           Todos os serviços
         </Link>
 
-        <div className="mt-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-electric-blue/10 text-electric-blue">
-          <Icon size={26} />
+        <div className="relative mt-6">
+          <ServiceCardImage
+            image={service.image}
+            alt={service.name}
+            priority
+            sizes="(min-width: 768px) 700px, 90vw"
+            className="rounded-2xl border border-deep-blue/[0.06]"
+          />
+          <div className="absolute -bottom-6 left-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-deep-blue text-white shadow-lg ring-4 ring-white">
+            <Icon size={24} />
+          </div>
         </div>
 
-        <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-deep-blue sm:text-4xl">
+        <h1 className="font-display mt-12 text-3xl font-semibold tracking-tight text-deep-blue sm:text-4xl">
           {service.name}
         </h1>
 

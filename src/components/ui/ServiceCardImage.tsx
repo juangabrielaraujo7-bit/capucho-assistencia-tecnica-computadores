@@ -11,7 +11,7 @@ interface ServiceCardImageProps {
 }
 
 export function ServiceCardImage({ image, alt, sizes, priority, className }: ServiceCardImageProps) {
-  const defaultSizes = sizes ?? "(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw";
+  const defaultSizes = sizes ?? "(min-width: 1024px) 23vw, (min-width: 640px) 45vw, 90vw";
 
   if (image.fit === "contain") {
     return (
@@ -31,6 +31,7 @@ export function ServiceCardImage({ image, alt, sizes, priority, className }: Ser
           fill
           sizes={defaultSizes}
           priority={priority}
+          quality={90}
           className="object-contain p-6 drop-shadow-[0_18px_20px_rgba(7,26,51,0.18)]"
         />
       </div>
@@ -45,6 +46,7 @@ export function ServiceCardImage({ image, alt, sizes, priority, className }: Ser
         fill
         sizes={defaultSizes}
         priority={priority}
+        quality={90}
         style={{ objectPosition: image.position ?? "50% 50%" }}
         className="object-cover transition-transform duration-500 group-hover:scale-105"
       />

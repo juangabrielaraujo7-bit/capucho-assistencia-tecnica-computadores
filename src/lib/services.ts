@@ -23,6 +23,8 @@ export interface HomeCardImage {
   alt: string;
   width: number;
   height: number;
+  /** "cover" fills the 16:9 frame (default). "contain" floats a cutout on a soft gradient backdrop. */
+  fit?: "cover" | "contain";
 }
 
 export interface Service {
@@ -109,8 +111,16 @@ export const services: Service[] = [
       "Montamos PCs Gamer personalizados, com seleção de componentes compatíveis e otimizados para o seu orçamento, seja para jogos, streaming ou produtividade. Consultoria técnica completa do início ao fim.",
     keywords: ["montagem de PC Gamer", "PC Gamer sob medida São Paulo", "monte seu PC"],
     image: { src: "/images/services/montagem-de-pc-gamer.png", fit: "contain" },
-    // TODO: substituir por uma foto de bancada (a atual foi feita em fundo de estúdio e destoa das outras).
-    homeImage: "placeholder",
+    // TODO: substituir por uma foto de bancada quando houver uma disponível (o recorte atual
+    // veio de uma foto de estúdio; funciona bem "flutuando" sobre um fundo, mas destoa das
+    // fotos de bancada usadas nos outros cards).
+    homeImage: {
+      src: "/images/services/montagem-de-pc-gamer.png",
+      alt: "Gabinete de PC Gamer com iluminação RGB roxa e componentes internos à mostra",
+      width: 650,
+      height: 866,
+      fit: "contain",
+    },
   },
   {
     slug: "manutencao-preventiva",

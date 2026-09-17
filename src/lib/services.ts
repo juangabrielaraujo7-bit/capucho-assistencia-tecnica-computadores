@@ -18,6 +18,13 @@ export interface ServiceImage {
   fit?: "cover" | "contain";
 }
 
+export interface HomeCardImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
 export interface Service {
   slug: string;
   name: string;
@@ -26,6 +33,13 @@ export interface Service {
   longDescription: string;
   keywords: string[];
   image: ServiceImage;
+  /** Shorter title for the home page's featured card, where a one-line title keeps card heights aligned. */
+  cardTitle?: string;
+  /**
+   * 16:9 photo used only by the home page's featured services grid.
+   * "placeholder" means no suitable photo exists yet (see TODO at the usage site).
+   */
+  homeImage?: HomeCardImage | "placeholder";
 }
 
 export const services: Service[] = [
@@ -39,6 +53,12 @@ export const services: Service[] = [
       "Realizamos a formatação completa do seu notebook ou desktop com backup prévio de todos os seus arquivos, fotos e documentos. O processo é feito com segurança, garantindo que nenhum dado seja perdido e que o equipamento volte a funcionar com máxima performance.",
     keywords: ["formatação de notebook", "backup de dados", "formatação com segurança São Paulo"],
     image: { src: "/images/services/formatacao-com-backup.jpg" },
+    homeImage: {
+      src: "/servicos/formatacao-backup.webp",
+      alt: "HD externo conectado a notebook durante backup de arquivos",
+      width: 960,
+      height: 540,
+    },
   },
   {
     slug: "upgrade-de-ssd",
@@ -50,6 +70,12 @@ export const services: Service[] = [
       "Instalamos SSDs de alta qualidade em notebooks e desktops, com migração completa do sistema operacional e dos arquivos. O resultado é um computador muito mais rápido para ligar, abrir programas e rodar o dia a dia de trabalho.",
     keywords: ["upgrade de SSD", "troca de HD por SSD", "computador lento São Paulo"],
     image: { src: "/images/services/upgrade-de-ssd.jpg", position: "50% 72%" },
+    homeImage: {
+      src: "/servicos/upgrade-ssd.webp",
+      alt: "SSD NVMe ao lado de notebook aberto para upgrade de armazenamento",
+      width: 960,
+      height: 540,
+    },
   },
   {
     slug: "upgrade-de-memoria-ram",
@@ -83,6 +109,8 @@ export const services: Service[] = [
       "Montamos PCs Gamer personalizados, com seleção de componentes compatíveis e otimizados para o seu orçamento, seja para jogos, streaming ou produtividade. Consultoria técnica completa do início ao fim.",
     keywords: ["montagem de PC Gamer", "PC Gamer sob medida São Paulo", "monte seu PC"],
     image: { src: "/images/services/montagem-de-pc-gamer.png", fit: "contain" },
+    // TODO: substituir por uma foto de bancada (a atual foi feita em fundo de estúdio e destoa das outras).
+    homeImage: "placeholder",
   },
   {
     slug: "manutencao-preventiva",
@@ -94,10 +122,17 @@ export const services: Service[] = [
       "A manutenção preventiva inclui limpeza interna, troca de pasta térmica, revisão de coolers e verificação geral do equipamento, evitando superaquecimento, travamentos e falhas futuras.",
     keywords: ["manutenção preventiva de notebook", "limpeza interna computador", "pasta térmica"],
     image: { src: "/images/services/manutencao-preventiva.jpg", position: "58% 50%" },
+    homeImage: {
+      src: "/servicos/manutencao-preventiva.webp",
+      alt: "Aplicação de pasta térmica no processador durante manutenção preventiva",
+      width: 960,
+      height: 540,
+    },
   },
   {
     slug: "diagnostico-e-solucao-de-problemas-tecnicos",
     name: "Diagnóstico e solução de problemas técnicos",
+    cardTitle: "Diagnóstico técnico",
     icon: "SearchCode",
     shortDescription:
       "Diagnóstico técnico preciso para identificar a real causa do problema.",
@@ -105,6 +140,12 @@ export const services: Service[] = [
       "Utilizamos ferramentas e experiência técnica para diagnosticar com precisão falhas de hardware e software, apresentando um orçamento transparente antes de qualquer execução de serviço.",
     keywords: ["diagnóstico de computador", "notebook não liga", "solução de problemas técnicos"],
     image: { src: "/images/services/diagnostico.jpg", position: "50% 42%" },
+    homeImage: {
+      src: "/servicos/diagnostico-tecnico.webp",
+      alt: "Técnico realizando diagnóstico em placa-mãe de notebook aberto",
+      width: 960,
+      height: 540,
+    },
   },
   {
     slug: "reparo-de-placa",
@@ -138,9 +179,39 @@ export const services: Service[] = [
       "Trocamos telas de notebook com defeito, trincadas ou queimadas, utilizando peças compatíveis com o modelo do seu equipamento, devolvendo a qualidade de imagem original.",
     keywords: ["troca de tela de notebook", "conserto de tela notebook São Paulo", "tela quebrada"],
     image: { src: "/images/services/troca-de-tela-notebook.jpg" },
+    homeImage: {
+      src: "/servicos/troca-tela-notebook.webp",
+      alt: "Notebook com tela danificada apresentando falha de imagem",
+      width: 960,
+      height: 540,
+    },
   },
 ];
 
 export function getServiceBySlug(slug: string): Service | undefined {
   return services.find((service) => service.slug === slug);
+}
+
+/** Order for the home page's featured services grid (6 cards, each with a photo). */
+export const featuredServiceSlugs = [
+  "diagnostico-e-solucao-de-problemas-tecnicos",
+  "formatacao-com-backup",
+  "upgrade-de-ssd",
+  "manutencao-preventiva",
+  "troca-de-tela-notebook",
+  "montagem-de-pc-gamer",
+] as const;
+
+/** The remaining services, listed as plain links below the featured grid on the home page. */
+export const otherServiceSlugs = [
+  "reparo-de-placa",
+  "instalacao-de-softwares",
+  "upgrade-de-memoria-ram",
+  "troca-de-hardware",
+] as const;
+
+export function getServicesBySlugs(slugs: readonly string[]): Service[] {
+  return slugs
+    .map((slug) => getServiceBySlug(slug))
+    .filter((service): service is Service => service !== undefined);
 }

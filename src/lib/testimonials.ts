@@ -1,26 +1,30 @@
 export interface Testimonial {
   name: string;
   rating: number;
+  timeAgo: string;
   comment: string;
 }
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Marcos Silva",
+    name: "Bruno Campos Martins",
     rating: 5,
+    timeAgo: "5 meses atrás",
     comment:
-      "Levei meu notebook travando demais e voltou parecendo novo. Upgrade de SSD fez toda a diferença. Atendimento muito profissional.",
+      "Excelente profissional! Atencioso, explicativo e sabe o que está fazendo. Serviços feitos: troca de pasta térmica e limpeza de notebook, além de atualização de hardware para o PC. Entenderam minha situação de uso e fizeram a atualização certa para essa necessidade!",
   },
   {
-    name: "Ana Paula Ferreira",
+    name: "Sérgio Silveira",
     rating: 5,
+    timeAgo: "3 meses atrás",
     comment:
-      "Montaram meu PC Gamer exatamente dentro do orçamento que eu tinha. Explicaram cada peça e o resultado ficou excelente.",
+      "Trabalho excelente! Atendimento personalizado que levou em conta as necessidades do cliente, além de serem muito atenciosos. E o mais importante, foi o resultado: meu notebook, de vários anos, após a manutenção, ficou como novo! Recomendo de olhos fechados, pois são parceiros e competentes!",
   },
   {
-    name: "Rodrigo Mendes",
+    name: "Thamiris Vieira",
     rating: 5,
+    timeAgo: "2 meses atrás",
     comment:
-      "Diagnóstico rápido e honesto. Não tentaram vender nada desnecessário, resolveram o problema real da minha placa-mãe.",
+      "Não é a primeira vez que ele me salva rs. Ótimo profissional, entende o que faz, trabalha com carisma e tem ótimos preços pela qualidade do serviço. Agora será da família e para sempre! Obrigada pela atenção e profissionalismo sempre. Indico de olhos fechados, podem confiar!",
   },
 ];

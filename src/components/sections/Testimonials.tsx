@@ -27,10 +27,13 @@ export function Testimonials() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="flex flex-col rounded-2xl border border-deep-blue/[0.06] bg-white p-7"
             >
-              <div className="flex gap-1 text-electric-blue">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} size={16} fill="currentColor" strokeWidth={0} />
-                ))}
+              <div className="flex items-center justify-between">
+                <div className="flex gap-1 text-electric-blue">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <Star key={i} size={16} fill="currentColor" strokeWidth={0} />
+                  ))}
+                </div>
+                <span className="text-xs text-foreground/40">{testimonial.timeAgo}</span>
               </div>
               <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground/70">
                 &ldquo;{testimonial.comment}&rdquo;

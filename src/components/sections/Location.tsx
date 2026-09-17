@@ -6,16 +6,22 @@ import { buildWhatsAppUrl, defaultWhatsAppMessage, siteConfig } from "@/lib/site
 
 export function Location() {
   return (
-    <section id="contato" className="bg-tech-gray py-24 sm:py-28">
-      <div className="container-page">
+    <section id="contato" className="relative overflow-hidden bg-deep-blue py-24 sm:py-28">
+      <div
+        className="pointer-events-none absolute -left-32 top-0 h-[420px] w-[420px] rounded-full bg-electric-blue/15 blur-[120px]"
+        aria-hidden
+      />
+
+      <div className="container-page relative">
         <SectionHeading
           eyebrow="Localização e contato"
           title="Fale com a gente ou venha até a loja"
+          theme="dark"
         />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
           <div className="flex flex-col gap-6">
-            <div className="overflow-hidden rounded-2xl border border-deep-blue/[0.06]">
+            <div className="overflow-hidden rounded-2xl border border-white/10">
               <iframe
                 title="Localização da Capucho Informática no Google Maps"
                 src={siteConfig.google.mapsEmbedSrc}
@@ -27,20 +33,20 @@ export function Location() {
               />
             </div>
 
-            <div className="grid gap-4 rounded-2xl border border-deep-blue/[0.06] bg-white p-7 sm:grid-cols-2">
+            <div className="grid gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-7 sm:grid-cols-2">
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-electric-blue" />
                 <div>
-                  <p className="text-sm font-semibold text-deep-blue">Endereço</p>
-                  <p className="mt-1 text-sm text-foreground/60">{siteConfig.address.full}</p>
+                  <p className="text-sm font-semibold text-white">Endereço</p>
+                  <p className="mt-1 text-sm text-white/60">{siteConfig.address.full}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
                 <Clock size={18} className="mt-0.5 shrink-0 text-electric-blue" />
                 <div>
-                  <p className="text-sm font-semibold text-deep-blue">Horário</p>
-                  <div className="mt-1 space-y-0.5 text-sm text-foreground/60">
+                  <p className="text-sm font-semibold text-white">Horário</p>
+                  <div className="mt-1 space-y-0.5 text-sm text-white/60">
                     {siteConfig.hours.map((item) => (
                       <p key={item.days}>
                         {item.days}: {item.time}
@@ -58,8 +64,8 @@ export function Location() {
               >
                 <MessageCircle size={18} className="mt-0.5 shrink-0 text-electric-blue" />
                 <div>
-                  <p className="text-sm font-semibold text-deep-blue">WhatsApp</p>
-                  <p className="mt-1 text-sm text-foreground/60">{siteConfig.phoneDisplay}</p>
+                  <p className="text-sm font-semibold text-white">WhatsApp</p>
+                  <p className="mt-1 text-sm text-white/60">{siteConfig.phoneDisplay}</p>
                 </div>
               </a>
 
@@ -71,8 +77,8 @@ export function Location() {
               >
                 <InstagramIcon size={18} className="mt-0.5 shrink-0 text-electric-blue" />
                 <div>
-                  <p className="text-sm font-semibold text-deep-blue">Instagram</p>
-                  <p className="mt-1 text-sm text-foreground/60">{siteConfig.instagramHandle}</p>
+                  <p className="text-sm font-semibold text-white">Instagram</p>
+                  <p className="mt-1 text-sm text-white/60">{siteConfig.instagramHandle}</p>
                 </div>
               </a>
             </div>

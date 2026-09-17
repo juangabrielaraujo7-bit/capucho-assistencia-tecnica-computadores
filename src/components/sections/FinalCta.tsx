@@ -19,7 +19,7 @@ export function FinalCta() {
         transition={{ duration: 0.6 }}
         className="container-page relative flex flex-col items-center text-center"
       >
-        <h2 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-deep-blue sm:text-4xl">
+        <h2 className="font-display max-w-2xl text-balance text-3xl font-semibold tracking-tight text-deep-blue sm:text-4xl">
           Seu computador merece um atendimento à altura
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-foreground/60 sm:text-base">

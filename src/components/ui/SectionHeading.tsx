@@ -14,7 +14,7 @@ export function SectionHeading({ eyebrow, title, description, align = "center" }
           {eyebrow}
         </span>
       ) : null}
-      <h2 className="mt-4 text-3xl font-semibold tracking-tight text-balance text-deep-blue sm:text-4xl">
+      <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight text-balance text-deep-blue sm:text-4xl">
         {title}
       </h2>
       {description ? (

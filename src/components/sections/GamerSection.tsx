@@ -28,7 +28,7 @@ export function GamerSection() {
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-electric-blue">
             Área Gamer
           </span>
-          <h2 className="mt-5 max-w-lg text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="font-display mt-5 max-w-lg text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
             Performance e estética para o seu setup gamer
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">

@@ -27,7 +27,7 @@ const variantClasses: Record<ButtonVariant, string> = {
 
 export function Button({ href, external, children, variant = "primary", className, icon }: ButtonAsLink) {
   const classes = clsx(
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-tight transition-all duration-300 active:scale-[0.98]",
+    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-tight transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.02] active:scale-[0.98]",
     variantClasses[variant],
     className
   );

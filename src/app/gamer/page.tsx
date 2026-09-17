@@ -44,7 +44,7 @@ export default function GamerPage() {
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-electric-blue">
             Área Gamer
           </span>
-          <h1 className="mt-6 max-w-2xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1 className="font-display mt-6 max-w-2xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
             Sua build gamer, montada sob medida
           </h1>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-white/60 sm:text-base">
@@ -110,7 +110,7 @@ export default function GamerPage() {
 
       <section className="py-24 sm:py-28">
         <div className="container-page flex flex-col items-center text-center">
-          <h2 className="max-w-xl text-balance text-2xl font-semibold text-deep-blue sm:text-3xl">
+          <h2 className="font-display max-w-xl text-balance text-2xl font-semibold text-deep-blue sm:text-3xl">
             Nota {siteConfig.google.rating.toFixed(1)} no Google com {siteConfig.google.reviewCount}{" "}
             avaliações
           </h2>

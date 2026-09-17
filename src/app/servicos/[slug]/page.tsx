@@ -65,7 +65,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <Icon size={26} />
         </div>
 
-        <h1 className="mt-6 text-3xl font-semibold tracking-tight text-deep-blue sm:text-4xl">
+        <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-deep-blue sm:text-4xl">
           {service.name}
         </h1>
 

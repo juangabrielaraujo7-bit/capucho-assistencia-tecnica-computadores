@@ -1,23 +1,34 @@
 "use client";
 
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import { motion, useReducedMotion } from "framer-motion";
 import { MessageCircle, Wrench, Gamepad2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { buildWhatsAppUrl, defaultWhatsAppMessage } from "@/lib/site-config";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-};
+const HeroCanvas = dynamic(
+  () => import("@/components/three/HeroCanvas").then((mod) => mod.HeroCanvas),
+  { ssr: false }
+);
 
 export function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 24 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: shouldReduceMotion ? 0.3 : 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
+    }),
+  };
+
   return (
     <section className="relative overflow-hidden pt-24 pb-28 sm:pt-32 sm:pb-36">
       <div className="grid-glow pointer-events-none absolute inset-0" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 opacity-60" aria-hidden>
+        <HeroCanvas />
+      </div>
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-electric-blue/10 blur-[110px]"
         aria-hidden
@@ -40,7 +51,7 @@ export function Hero() {
           animate="visible"
           custom={0.1}
           variants={fadeUp}
-          className="mt-8 max-w-4xl text-balance text-4xl font-semibold tracking-tight text-deep-blue sm:text-6xl"
+          className="font-display mt-8 max-w-4xl text-balance text-4xl font-semibold tracking-tight text-deep-blue sm:text-6xl"
         >
           Tecnologia de alto nível para o seu computador
         </motion.h1>

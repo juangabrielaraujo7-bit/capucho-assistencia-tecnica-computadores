@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { MessageCircle, Wrench, Gamepad2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { PhotoLaptopAssemble } from "@/components/hero/PhotoLaptopAssemble";
+import { HeroLaptopAssembly } from "@/components/hero/HeroLaptopAssembly";
 import { buildWhatsAppUrl, defaultWhatsAppMessage } from "@/lib/site-config";
 
 export function Hero() {
@@ -99,22 +99,13 @@ export function Hero() {
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0.3 : 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mx-auto w-full max-w-md"
+          className="relative mx-auto w-full max-w-md lg:max-w-none lg:w-[112%] lg:-mr-[6%]"
         >
           <div
             className="pointer-events-none absolute inset-0 rounded-full bg-electric-blue/10 blur-[80px]"
             aria-hidden
           />
-          <motion.div
-            animate={
-              shouldReduceMotion
-                ? undefined
-                : { y: [0, -10, 0], rotate: [0, 0.8, 0, -0.8, 0], transition: { duration: 9, repeat: Infinity, ease: "easeInOut" as const, delay: 0.15 } }
-            }
-            className="relative aspect-[4/3] w-full"
-          >
-            <PhotoLaptopAssemble />
-          </motion.div>
+          <HeroLaptopAssembly className="relative aspect-[4/3] w-full" />
         </motion.div>
       </div>
     </section>

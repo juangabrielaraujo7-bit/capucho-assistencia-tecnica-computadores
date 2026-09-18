@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { MessageCircle, Wrench, Gamepad2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { LazyLaptop3D } from "@/components/three/LazyLaptop3D";
+import { PhotoLaptopAssemble } from "@/components/hero/PhotoLaptopAssemble";
 import { buildWhatsAppUrl, defaultWhatsAppMessage } from "@/lib/site-config";
 
 export function Hero() {
@@ -105,8 +105,15 @@ export function Hero() {
             className="pointer-events-none absolute inset-0 rounded-full bg-electric-blue/10 blur-[80px]"
             aria-hidden
           />
-          <motion.div animate={float(10, 6, 0.15)} className="relative aspect-[4/3] w-full">
-            <LazyLaptop3D className="absolute inset-0" />
+          <motion.div
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : { y: [0, -10, 0], rotate: [0, 0.8, 0, -0.8, 0], transition: { duration: 9, repeat: Infinity, ease: "easeInOut" as const, delay: 0.15 } }
+            }
+            className="relative aspect-[4/3] w-full"
+          >
+            <PhotoLaptopAssemble />
           </motion.div>
         </motion.div>
       </div>

@@ -11,10 +11,14 @@ export function Testimonials() {
   return (
     <section id="depoimentos" className="bg-tech-gray py-24 sm:py-28">
       <div className="container-page">
+        {/* Alinhamento mantido centralizado por enquanto — o restante do site foi
+            alterado para o padrão alinhado à esquerda, mas esta seção ainda vai
+            passar por uma modernização à parte (ver conversa). */}
         <SectionHeading
           eyebrow="Depoimentos"
           title="Quem confia, recomenda"
           description={`Nota ${siteConfig.google.rating.toFixed(1)} no Google, com ${siteConfig.google.reviewCount} avaliações de clientes reais.`}
+          align="center"
         />
 
         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">

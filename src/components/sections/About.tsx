@@ -41,9 +41,9 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="rounded-2xl border border-deep-blue/[0.06] bg-white p-7 text-center"
+              className="rounded-2xl border border-deep-blue/[0.06] bg-white p-7"
             >
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-electric-blue/10 text-electric-blue">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-electric-blue/10 text-electric-blue">
                 <reason.icon size={22} />
               </div>
               <h3 className="mt-5 text-base font-semibold text-deep-blue">{reason.title}</h3>

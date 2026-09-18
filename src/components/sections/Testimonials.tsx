@@ -4,7 +4,6 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { LazyParticles } from "@/components/three/LazyParticles";
 import { testimonials } from "@/lib/testimonials";
 import { siteConfig } from "@/lib/site-config";
 
@@ -27,7 +26,6 @@ export function Testimonials() {
       className="deep-space-bg relative overflow-hidden py-24 sm:py-28"
     >
       <div className="grid-glow-dark pointer-events-none absolute inset-0" aria-hidden />
-      <LazyParticles className="pointer-events-none absolute inset-0 opacity-40" />
       <div
         className="pointer-events-none absolute -left-24 top-10 h-[380px] w-[380px] rounded-full bg-electric-blue/20 blur-[110px]"
         aria-hidden

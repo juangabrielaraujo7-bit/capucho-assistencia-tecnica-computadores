@@ -4,30 +4,36 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { LazyParticles } from "@/components/three/LazyParticles";
 import { testimonials } from "@/lib/testimonials";
 import { siteConfig } from "@/lib/site-config";
 
-/** Resting tilt/offset per card, cycled by index so any number of testimonials looks organic. */
+/** Resting tilt/offset per card, cycled by index so any number of testimonials looks organic and spread out. */
 const cardOffsets = [
-  { rotate: -4, y: 10 },
-  { rotate: 3, y: -16 },
-  { rotate: -6, y: 6 },
-  { rotate: 5, y: -8 },
-  { rotate: -2, y: 16 },
-  { rotate: 4, y: -4 },
+  { rotate: -6, y: 18, x: 0 },
+  { rotate: 4, y: -22, x: 10 },
+  { rotate: -3, y: 4, x: -8 },
+  { rotate: 6, y: -6, x: 6 },
+  { rotate: -5, y: 24, x: -4 },
+  { rotate: 3, y: -14, x: 4 },
 ];
 
 export function Testimonials() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="depoimentos" className="relative overflow-hidden bg-deep-blue py-24 sm:py-28">
+    <section
+      id="depoimentos"
+      className="deep-space-bg relative overflow-hidden py-24 sm:py-28"
+    >
+      <div className="grid-glow-dark pointer-events-none absolute inset-0" aria-hidden />
+      <LazyParticles className="pointer-events-none absolute inset-0 opacity-40" />
       <div
-        className="pointer-events-none absolute -left-24 top-10 h-[380px] w-[380px] rounded-full bg-electric-blue/15 blur-[110px]"
+        className="pointer-events-none absolute -left-24 top-10 h-[380px] w-[380px] rounded-full bg-electric-blue/20 blur-[110px]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-20 bottom-0 h-[320px] w-[420px] rounded-full bg-electric-blue/10 blur-[120px]"
+        className="pointer-events-none absolute -right-20 bottom-0 h-[320px] w-[420px] rounded-full bg-electric-blue/15 blur-[120px]"
         aria-hidden
       />
 
@@ -38,7 +44,7 @@ export function Testimonials() {
           theme="dark"
         />
 
-        <div className="mt-16 grid gap-10 lg:grid-cols-[200px_1fr] lg:gap-6">
+        <div className="mt-16 grid gap-10 lg:grid-cols-[200px_1fr] lg:gap-4">
           {/* Selo do Google apontando para os depoimentos */}
           <div className="relative flex items-center justify-center lg:justify-start">
             <motion.div
@@ -92,9 +98,10 @@ export function Testimonials() {
           </div>
 
           {/* Cards flutuantes */}
-          <div className="flex flex-wrap justify-center gap-6 py-6 lg:justify-start lg:py-10">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-10 py-8 lg:justify-start lg:py-12">
             {testimonials.map((testimonial, index) => {
               const offset = cardOffsets[index % cardOffsets.length];
+              const floatDuration = 3.4 + (index % 3) * 0.6;
 
               return (
                 <motion.div
@@ -102,45 +109,76 @@ export function Testimonials() {
                   initial={
                     shouldReduceMotion
                       ? { opacity: 0 }
-                      : { opacity: 0, scale: 0.6, x: -70, rotate: 0 }
+                      : { opacity: 0, scale: 0.55, x: offset.x - 90, rotate: 0 }
                   }
                   whileInView={
                     shouldReduceMotion
                       ? { opacity: 1 }
-                      : { opacity: 1, scale: 1, x: 0, rotate: offset.rotate, y: offset.y }
+                      : {
+                          opacity: 1,
+                          scale: 1,
+                          x: offset.x,
+                          rotate: offset.rotate,
+                          y: offset.y,
+                        }
                   }
                   viewport={{ once: true, amount: 0.3 }}
                   transition={
                     shouldReduceMotion
                       ? { duration: 0.3 }
-                      : { type: "spring", stiffness: 260, damping: 22, delay: index * 0.09 }
+                      : { type: "spring", stiffness: 250, damping: 20, delay: index * 0.08 }
                   }
                   whileHover={
                     shouldReduceMotion
                       ? undefined
                       : {
                           rotate: 0,
-                          scale: 1.06,
-                          y: offset.y - 10,
+                          scale: 1.08,
+                          y: offset.y - 12,
+                          zIndex: 20,
                           transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
                         }
                   }
-                  className="flex w-[270px] flex-col rounded-2xl bg-white p-6 shadow-[0_20px_45px_rgba(0,0,0,0.35)] sm:w-[290px]"
+                  className="relative"
                 >
-                  <div className="flex items-center justify-between">
-                    <Image
-                      src="/images/testimonials/five-stars.webp"
-                      alt="Avaliação 5 estrelas"
-                      width={560}
-                      height={111}
-                      className="h-[18px] w-auto"
-                    />
-                    <span className="text-[11px] text-foreground/40">{testimonial.timeAgo}</span>
-                  </div>
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground/70">
-                    &ldquo;{testimonial.comment}&rdquo;
-                  </p>
-                  <p className="mt-5 text-sm font-semibold text-deep-blue">{testimonial.name}</p>
+                  {/* Camada separada para o balanço contínuo, somado ao pouso/hover acima */}
+                  <motion.div
+                    animate={
+                      shouldReduceMotion
+                        ? undefined
+                        : { y: [0, -7, 0] }
+                    }
+                    transition={
+                      shouldReduceMotion
+                        ? undefined
+                        : {
+                            duration: floatDuration,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: index * 0.3,
+                          }
+                    }
+                    className="flex w-[190px] flex-col rounded-2xl bg-white p-4 shadow-[0_18px_35px_rgba(0,0,0,0.35)] sm:w-[210px] sm:p-5"
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <Image
+                        src="/images/testimonials/five-stars.webp"
+                        alt="Avaliação 5 estrelas"
+                        width={560}
+                        height={111}
+                        className="h-[14px] w-auto"
+                      />
+                      <span className="whitespace-nowrap text-[10px] text-foreground/40">
+                        {testimonial.timeAgo}
+                      </span>
+                    </div>
+                    <p className="mt-3 line-clamp-6 flex-1 text-xs leading-relaxed text-foreground/70">
+                      &ldquo;{testimonial.comment}&rdquo;
+                    </p>
+                    <p className="mt-3 text-xs font-semibold text-deep-blue">
+                      {testimonial.name}
+                    </p>
+                  </motion.div>
                 </motion.div>
               );
             })}

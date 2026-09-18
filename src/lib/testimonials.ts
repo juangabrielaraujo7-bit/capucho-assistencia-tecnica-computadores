@@ -34,4 +34,18 @@ export const testimonials: Testimonial[] = [
     comment:
       "Pessoa inacreditável na prestação de serviço. Não só descobriu a causa do problema (um defeito minúsculo no processador) como foi duas vezes atrás de peças e ainda cedeu peças pessoais para resolver. A montagem ficou perfeita, como todos os serviços que já fiz com ele. Serviço fantástico, indico sem medo nenhum!",
   },
+  {
+    name: "Tiego Sosinho",
+    rating: 5,
+    timeAgo: "5 meses atrás",
+    comment:
+      "Atendimento rápido, preço justo e conseguiu fazer funcionar até o processador que estava faltando um pino!",
+  },
+  {
+    name: "Sara Terras",
+    rating: 5,
+    timeAgo: "8 meses atrás",
+    comment:
+      "Atendimento rápido, personalizado, o Henrique é muito atencioso e prestativo. Gostei da sinceridade e honestidade no atendimento. Quase joguei fora meu notebook, mas graças à Capucho Informática, hoje estou com meu equipamento funcionando perfeitamente!",
+  },
 ];

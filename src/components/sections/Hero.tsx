@@ -1,16 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { MessageCircle, Wrench, Gamepad2, Star } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { LazyParticles } from "@/components/three/LazyParticles";
 import { buildWhatsAppUrl, defaultWhatsAppMessage, siteConfig } from "@/lib/site-config";
-
-const HeroCanvas = dynamic(
-  () => import("@/components/three/HeroCanvas").then((mod) => mod.HeroCanvas),
-  { ssr: false }
-);
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -27,9 +22,7 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden pt-16 pb-20 sm:pt-20 sm:pb-28">
       <div className="grid-glow pointer-events-none absolute inset-0" aria-hidden />
-      <div className="pointer-events-none absolute inset-0 opacity-60" aria-hidden>
-        <HeroCanvas />
-      </div>
+      <LazyParticles className="pointer-events-none absolute inset-0 opacity-60" />
       <div
         className="pointer-events-none absolute left-0 top-0 h-[420px] w-[560px] rounded-full bg-electric-blue/10 blur-[110px]"
         aria-hidden

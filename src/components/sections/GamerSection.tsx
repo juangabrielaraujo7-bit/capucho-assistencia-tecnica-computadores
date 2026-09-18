@@ -12,9 +12,13 @@ const highlights = [
 
 export function GamerSection() {
   return (
-    <section id="gamer" className="relative overflow-hidden bg-deep-blue py-24 text-white sm:py-28">
+    <section
+      id="gamer"
+      className="relative overflow-hidden bg-[#2a0a4a] py-24 text-white sm:py-28"
+    >
+      {/* TODO: roxo temporário só para diferenciar da seção de Depoimentos (agora também escura). Revisitar a paleta desta seção depois. */}
       <div
-        className="pointer-events-none absolute -right-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-electric-blue/20 blur-[120px]"
+        className="pointer-events-none absolute -right-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-[#a855f7]/25 blur-[120px]"
         aria-hidden
       />
 
@@ -25,7 +29,7 @@ export function GamerSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-electric-blue">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#c084fc]">
             Área Gamer
           </span>
           <h2 className="font-display mt-5 max-w-lg text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -54,7 +58,7 @@ export function GamerSection() {
               key={item.label}
               className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5"
             >
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-electric-blue/20 text-electric-blue">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#a855f7]/20 text-[#c084fc]">
                 <item.icon size={20} />
               </div>
               <p className="text-sm font-medium text-white/80">{item.label}</p>

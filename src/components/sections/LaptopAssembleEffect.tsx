@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 /**
  * TESTE / PROTÓTIPO — versão inicial para validar a ideia antes de refinar.
@@ -36,15 +35,21 @@ function partVariants(scattered: { x: number; y: number; rotate: number }, delay
   };
 }
 
+function prefersReducedMotion(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  } catch {
+    return false;
+  }
+}
+
 export function LaptopAssembleEffect() {
-  const shouldReduceMotion = useReducedMotion();
-  const [isAssembled, setIsAssembled] = useState(false);
+  const [shouldReduceMotion] = useState(prefersReducedMotion);
+  const [isAssembled, setIsAssembled] = useState(prefersReducedMotion);
 
   useEffect(() => {
-    if (shouldReduceMotion) {
-      setIsAssembled(true);
-      return;
-    }
+    if (shouldReduceMotion) return;
 
     let mounted = true;
     let timer: ReturnType<typeof setTimeout>;

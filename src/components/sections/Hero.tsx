@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { MessageCircle, Wrench, Gamepad2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { LaptopAssembleEffect } from "@/components/sections/LaptopAssembleEffect";
+import { LazyLaptop3D } from "@/components/three/LazyLaptop3D";
 import { buildWhatsAppUrl, defaultWhatsAppMessage } from "@/lib/site-config";
 
 export function Hero() {
@@ -105,8 +105,8 @@ export function Hero() {
             className="pointer-events-none absolute inset-0 rounded-full bg-electric-blue/10 blur-[80px]"
             aria-hidden
           />
-          <motion.div animate={float(10, 6, 0.15)} className="relative">
-            <LaptopAssembleEffect />
+          <motion.div animate={float(10, 6, 0.15)} className="relative aspect-[4/3] w-full">
+            <LazyLaptop3D className="absolute inset-0" />
           </motion.div>
         </motion.div>
       </div>

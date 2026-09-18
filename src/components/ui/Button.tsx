@@ -2,7 +2,7 @@ import Link from "next/link";
 import { type ReactNode } from "react";
 import clsx from "clsx";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "ghost-dark";
 
 interface BaseProps {
   children: ReactNode;
@@ -23,6 +23,8 @@ const variantClasses: Record<ButtonVariant, string> = {
     "bg-deep-blue text-white hover:bg-[#0a2445]",
   ghost:
     "bg-transparent text-deep-blue border border-deep-blue/15 hover:border-deep-blue/40 hover:bg-deep-blue/[0.03]",
+  "ghost-dark":
+    "bg-white/5 text-white border border-white/15 hover:border-white/30 hover:bg-white/10",
 };
 
 export function Button({ href, external, children, variant = "primary", className, icon }: ButtonAsLink) {

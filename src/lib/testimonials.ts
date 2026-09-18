@@ -27,4 +27,11 @@ export const testimonials: Testimonial[] = [
     comment:
       "Não é a primeira vez que ele me salva rs. Ótimo profissional, entende o que faz, trabalha com carisma e tem ótimos preços pela qualidade do serviço. Agora será da família e para sempre! Obrigada pela atenção e profissionalismo sempre. Indico de olhos fechados, podem confiar!",
   },
+  {
+    name: "Lucas Alexandre",
+    rating: 5,
+    timeAgo: "3 meses atrás",
+    comment:
+      "Pessoa inacreditável na prestação de serviço. Não só descobriu a causa do problema (um defeito minúsculo no processador) como foi duas vezes atrás de peças e ainda cedeu peças pessoais para resolver. A montagem ficou perfeita, como todos os serviços que já fiz com ele. Serviço fantástico, indico sem medo nenhum!",
+  },
 ];

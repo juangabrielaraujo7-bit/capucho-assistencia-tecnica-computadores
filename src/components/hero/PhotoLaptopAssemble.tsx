@@ -116,11 +116,15 @@ const parts: Part[] = [
   },
 ];
 
+// Cantos reais da tela na foto montada (medidos em px sobre a imagem 622x460
+// e convertidos em %): topo-esq, topo-dir, baixo-dir, baixo-esq.
 const screenClip =
-  "polygon(11.7% 12.0%, 59.1% 8.2%, 59.1% 44.6%, 12.1% 48.4%)";
+  "polygon(10.93% 13.70%, 56.75% 12.61%, 66.56% 50.22%, 20.90% 57.17%)";
+const screenLogoCenter = { left: "38.8%", top: "33.4%" };
 
 const springTogether: Transition = { type: "spring", stiffness: 120, damping: 16 };
 const springScatter: Transition = { type: "spring", stiffness: 90, damping: 15 };
+const easeTransition: Transition = { duration: 0.5, ease: "easeOut" };
 
 function prefersReducedMotion(): boolean {
   if (typeof window === "undefined") return false;
@@ -133,11 +137,9 @@ function prefersReducedMotion(): boolean {
 
 export function PhotoLaptopAssemble() {
   const [reduced] = useState(prefersReducedMotion);
-  const [stage, setStage] = useState<Stage>(() => (prefersReducedMotion() ? "closed" : "scattered"));
+  const [stage, setStage] = useState<Stage>("scattered");
 
   useEffect(() => {
-    if (reduced) return;
-
     let mounted = true;
     let timer: ReturnType<typeof setTimeout>;
 
@@ -197,15 +199,18 @@ export function PhotoLaptopAssemble() {
                     y: part.scatter.y,
                     rotate: part.scatter.rotate,
                     opacity: 0.92,
-                    transition: { ...springScatter, delay: part.delay },
+                    transition: reduced
+                      ? easeTransition
+                      : { ...springScatter, delay: part.delay },
                   }
                 : {
                     x: 0,
                     y: 0,
                     rotate: 0,
                     opacity: partsVisible ? 1 : 0,
-                    transition:
-                      stage === "together"
+                    transition: reduced
+                      ? easeTransition
+                      : stage === "together"
                         ? { ...springTogether, delay: part.delay }
                         : { duration: 0.5 },
                   }
@@ -242,13 +247,18 @@ export function PhotoLaptopAssemble() {
           />
           <div
             className="absolute"
-            style={{ left: "35.5%", top: "28.3%", transform: "translate(-50%, -50%)", width: "34%" }}
+            style={{
+              left: screenLogoCenter.left,
+              top: screenLogoCenter.top,
+              transform: "translate(-50%, -50%)",
+              width: "26%",
+            }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/logo-capucho.png"
               alt="Capucho Informática"
-              className="w-full max-w-[160px] object-contain opacity-95"
+              className="w-full object-contain opacity-95"
               draggable={false}
             />
           </div>
